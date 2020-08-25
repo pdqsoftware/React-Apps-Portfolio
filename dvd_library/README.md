@@ -1,2 +1,3 @@
-# Boilerplate Code
-This part of the repository contains starter code.  It can be used to build news Apps as required.
+# DVD Library v1.0
+This is the first version of my DV Library App.
+Started: 24/08/2020

@@ -1,10 +1,16 @@
 import React from 'react'
 
 class AddNewTitle extends React.Component {
+
+    
+
     render() {
         return (
             <div>
-                <button>Add new DVD to collection</button>
+                {/* <div className="addNewButton">
+                    <button onClick={ this.props.addNewDvdButton }>Add new DVD to collection</button>
+                </div> */}
+                <div className="addNewButton" onClick={ this.props.addNewDvdButton }>Add new DVD to collection</div>
             </div>
         )
      } 

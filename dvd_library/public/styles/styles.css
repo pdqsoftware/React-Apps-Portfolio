@@ -1,0 +1,78 @@
+body {
+    background: #eeeeee;
+    font-family: 'Roboto',sans-serif;
+}
+.copyright {
+    text-align: right;
+    padding: 0px 25px;
+    font-size: 70%;
+}
+h1 {
+    font-family: 'Roboto',sans-serif;
+    color: #333333;
+    background-color: #9f84e6;
+    text-align: center;
+    padding: 20px;
+}
+
+h3 {
+    font-family: Arial, 'Courier New';
+    text-align: center;
+}
+h3:after {
+    content: ' \00A9';
+}
+
+.dropdown {
+    display: inline-block;
+    color: #000000;
+    padding: 10px 30px;
+}
+
+.dvdList {
+    padding: 45px;
+    border: 2px;
+    background-color: #74e7eb;
+    width: 30%;
+}
+
+.addNewButton2 {
+	background-color:transparent;
+	border-radius:3px;
+	border:2px solid #0b0e07;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:9px 23px;
+	text-decoration:none;
+}
+
+.addNewButton {
+    /* background: transparent; 
+    
+    margin: 0 0.3em 0.3em 0;
+    box-sizing: border-box;
+    */
+    font-family: 'Roboto',sans-serif;
+    color: #333333;
+    font-weight:300;
+    cursor: pointer;
+    background-color: #9f84e6;
+    border: 2px solid #666666;
+    text-align: center;
+    transition: all 0.2s;
+    width: 30%;
+    padding: 10px 45px;
+    margin-top: 20px;
+    -webkit-border-radius: 10px;  -moz-border-radius: 10px;  border-radius: 10px;
+}
+.addNewButton:hover {
+    color: #000000;
+    background-color: #7f84e6;
+}
+
+.dvdName::before {
+    content: '\25FD  ';
+}

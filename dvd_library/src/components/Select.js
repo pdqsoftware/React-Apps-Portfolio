@@ -10,15 +10,14 @@ class Select extends React.Component {
             ],
             genre: [
                 "Comedy", "Love Story", "Thriller", "Children's"
-            ],
-            sortOrder: "asc"
+            ]
         }
-        this.handleAdd=this.handleAdd.bind(this)
+        // this.handleAdd=this.handleAdd.bind(this)
     }
 
-    handleAdd() {
-        alert('Add button clicked!')
-    }
+    // handleAdd() {
+    //     alert('Add button clicked!')
+    // }
    
  
     render() {
@@ -40,7 +39,7 @@ class Select extends React.Component {
                         <option value="children">Children's</option>
                     </select>
                 </div>
-                <div className="dropdown">
+                <div className="dropdown" onChange={ e => this.props.changeOrder(e.target.value) }>
                     <select id="sort_order" name="order">
                         <option value="asc">Ascending</option>
                         <option value="desc">Descending</option>

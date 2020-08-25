@@ -5,7 +5,7 @@ class Header extends React.Component {
         return (
             <div>
                 <h1>DVD Library</h1>
-                <h2>Best App. ever!</h2>
+                <h3>Search, sort and manipulate my movie and TV series DVD collection to your heart's content</h3>
             </div>
         )
      } 

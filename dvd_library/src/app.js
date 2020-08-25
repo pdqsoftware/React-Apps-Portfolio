@@ -10,5 +10,8 @@ import DVDLibrary from './components/DVDLibrary'
 // var template = <p>{ title }</p>
 
 
+
+
 var appRoot = document.getElementById('app')
 ReactDOM.render(<DVDLibrary />, appRoot)
+// ReactDOM.render(template, appRoot)

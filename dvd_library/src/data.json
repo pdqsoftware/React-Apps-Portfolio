@@ -1,0 +1,30 @@
+{
+    "dvds": [
+        {
+            "name": "P.S. I Love You",
+            "type": "M",
+            "length": 101
+        },
+        {
+            "name": "Cold Feet",
+            "type": "S",
+            "length": "N/A"
+        },
+        {
+            "name": "About Time",
+            "type": "M",
+            "length": 118
+        },
+        {
+            "name": "Christmas Message",
+            "type": "M",
+            "length": 94
+        },
+        {
+            "name": "New Tricks",
+            "type": "S",
+            "length": "N/A"
+        }
+    ]
+}
+

@@ -8,35 +8,13 @@ class DvDList extends React.Component {
             result: []
         }
     }
-   
 
-    // componentDidMount() {
-    //     console.log('Fetching data in List...')       //  After component is mounted on the DOM
-
-    //     // const parsedJSON = require('../data.json');
-    //     // this.setState({
-    //     //     result: parsedJSON.dvds
-    //     // })
-        
-    //     fetch('../data.json')
-    //     .then(response => response.json())
-    //     .then(result => {
-    //         const dvds = result.map(item => {
-    //             console.log(item)
-    //             return item
-    //         })
-    //         this.setState({result: dvds})
-    //     })
-    // }
  
     render() {
 
-        // const parsedJSON = require('../data.json');
-        // const result = parsedJSON.dvds
-        // console.log(result)
-
         // Sort the DVDs, by name, according to sortOrder
         console.log(`Sort order: ${this.props.sortOrder}`)
+        console.log(`DVD type: ${this.props.selectedType}`)
         console.log(`DVDs: ${this.props.dvds}`)
 
         let order
@@ -45,16 +23,32 @@ class DvDList extends React.Component {
         } else { 
             order = -1
         }
-        console.log(`Order: ${order}`)
 
         let myDvds = this.props.dvds
 
-        myDvds.sort((a, b) => (a.name > b.name) ? 1 * order : -1 * order) 
+        myDvds.sort((a, b) => (a.name > b.name) ? 1 * order : -1 * order).filter(item => {
+            return item.type === this.props.selectedType
+        })
+
+        // Filter out by DVD type
+        myDvds = myDvds.filter(item => {
+            return this.props.selectedType === 'A' || item.type === this.props.selectedType
+        })
+
+         // Filter out by Genre - stored as an array on DVD
+         myDvds = myDvds.filter(item => {
+            console.log(item.genre, this.props.selectedGenre)
+            return this.props.selectedGenre === 'A' || item.genre.filter(genre => {
+                console.log(genre)
+                return genre === this.props.selectedGenre
+            }).length > 0 
+        })
 
         return (
             <div className="dvdList">
-                {
-                    myDvds.map(item => <p className="dvdName" key={ item.name }>{ item.name }</p>)
+                { myDvds.length == 0 ? 
+                    <p>No DVDs selected to display!</p> 
+                    : myDvds.map(item => <p className="dvdName" key={ item.name }>{ item.name }</p>) 
                 }
             </div>
         )

@@ -6,37 +6,75 @@ class Select extends React.Component {
         super(props)
         this.state = {
             type: [
-                "Movie", "Series", "Other", "Unknown"
+                {
+                    value: "A",
+                    label: "All"
+                },
+                {
+                    value: "M",
+                    label: "Movies"
+                },
+                {
+                    value: "S",
+                    label: "Series"
+                },
+                {
+                    value: "other",
+                    label: "Other"
+                },
+                {
+                    value: "unknown",
+                    label: "Unknown"
+                }
             ],
             genre: [
-                "Comedy", "Love Story", "Thriller", "Children's"
+                {
+                    value: "A",
+                    label: "Any"
+                },
+                {
+                    value: "action",
+                    label: "Action"
+                },
+                {
+                    value: "comedy",
+                    label: "Comedy"
+                },
+                {
+                    value: "christmas",
+                    label: "Christmas"
+                },
+                {
+                    value: "love",
+                    label: "Love Story"
+                },
+                {
+                    value: "thriller",
+                    label: "Thriller"
+                },
+                {
+                    value: "children",
+                    label: "Children's"
+                },
+                {
+                    value: "scifi",
+                    label: "Sci-Fi"
+                }
             ]
         }
-        // this.handleAdd=this.handleAdd.bind(this)
     }
-
-    // handleAdd() {
-    //     alert('Add button clicked!')
-    // }
-   
  
     render() {
         return (
             <div>
-                <div className="dropdown">
+                <div className="dropdown" onChange={ e => this.props.changeType(e.target.value) }>
                     <select id="movie_type" name="type">
-                        <option value="movie">Movie</option>
-                        <option value="series">Series</option>
-                        <option value="other">Other</option>
-                        <option value="unknown">Unknown</option>
+                        { this.state.type.map(item => <option key={ item.value } value={ item.value }>{ item.label }</option>) }
                     </select>
                 </div>
-                <div className="dropdown">
+                <div className="dropdown" onChange={ e => this.props.changeGenre(e.target.value) }>
                     <select id="movie_genre" name="genre">
-                        <option value="comedy">Comedy</option>
-                        <option value="love">Love Story</option>
-                        <option value="thriller">Thriller</option>
-                        <option value="children">Children's</option>
+                        { this.state.genre.map(item => <option key={ item.value } value={ item.value }>{ item.label }</option> ) }
                     </select>
                 </div>
                 <div className="dropdown" onChange={ e => this.props.changeOrder(e.target.value) }>

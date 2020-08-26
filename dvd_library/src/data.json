@@ -3,42 +3,56 @@
         {
             "name": "P.S. I Love You",
             "type": "M",
+            "genre": ["comedy"],
             "length": 101
         },
         {
             "name": "Cold Feet",
             "type": "S",
+            "genre": ["comedy"],
             "length": "N/A"
         },
         {
             "name": "About Time",
             "type": "M",
+            "genre": ["love"],
             "length": 118
         },
         {
             "name": "Christmas Message",
             "type": "M",
+            "genre": ["christmas", "love"],
             "length": 94
         },
         {
             "name": "New Tricks",
             "type": "S",
+            "genre": ["action"],
             "length": "N/A"
         },
         {
             "name": "Did you hear what happened to the Morgans?",
             "type": "M",
+            "genre": ["love"],
             "length": 99
         },
         {
             "name": "Kingdom",
             "type": "S",
+            "genre": ["comedy"],
             "length": "N/A"
         },
         {
             "name": "Detectorists",
             "type": "S",
+            "genre": ["comedy"],
             "length": "N/A"
+        },
+        {
+            "name": "Star Wars",
+            "type": "M",
+            "genre": ["action", "love", "christmas", "comedy"],
+            "length": 201
         }
     ]
 }

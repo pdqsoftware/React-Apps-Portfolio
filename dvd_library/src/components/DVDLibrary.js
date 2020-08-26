@@ -4,6 +4,8 @@ import Header from './Header'
 import DvdList from './DvdList'
 import AddNewTitle from './AddNewTitle'
 import Select from './Select'
+import Search from './Search'
+import Body from './Body'
 
 class DVDLibrary extends React.Component {
 
@@ -81,19 +83,23 @@ class DVDLibrary extends React.Component {
                     <div>
                         <Header />
                         <Select changeOrder={ this.handleChangeOrder } changeType= { this.handleChangeType } changeGenre={ this.handleChangeGenre } />
+                        <Search />
+                        { /* The Body is floating */ }
+                        <Body />
                         <DvdList 
                             dvds={ this.state.myDvds }
                             sortOrder={ this.state.sortOrder }
                             selectedType={ this.state.selectedType }
                             selectedGenre={ this.state.selectedGenre }
                         />
+                        
                         <AddNewTitle addNewDvdButton={ this.handleAdd } />
                     </div>
                 )
                 : null }
             </div>
         )
-     } 
+    } 
  }
 
  export default DVDLibrary

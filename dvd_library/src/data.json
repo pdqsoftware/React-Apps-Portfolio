@@ -49,9 +49,9 @@
             "length": "N/A"
         },
         {
-            "name": "Star Wars",
+            "name": "Generic Test Movie",
             "type": "M",
-            "genre": ["action", "love", "christmas", "comedy"],
+            "genre": ["action", "love", "christmas", "comedy", "thriller", "children", "scifi"],
             "length": 201
         }
     ]

@@ -15,7 +15,6 @@ class DvDList extends React.Component {
         // Sort the DVDs, by name, according to sortOrder
         console.log(`Sort order: ${this.props.sortOrder}`)
         console.log(`DVD type: ${this.props.selectedType}`)
-        console.log(`DVDs: ${this.props.dvds}`)
 
         let order
         if (this.props.sortOrder === 'asc') {
@@ -37,9 +36,7 @@ class DvDList extends React.Component {
 
          // Filter out by Genre - stored as an array on DVD
          myDvds = myDvds.filter(item => {
-            console.log(item.genre, this.props.selectedGenre)
             return this.props.selectedGenre === 'A' || item.genre.filter(genre => {
-                console.log(genre)
                 return genre === this.props.selectedGenre
             }).length > 0 
         })

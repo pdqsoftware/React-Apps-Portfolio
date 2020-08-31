@@ -29,17 +29,19 @@ h3:after {
     content: ' \00A9';
 }
 
+/* Classes */
+
 .dropdown {
     display: inline-block;
     color: #000000;
-    padding: 10px 40px;
+    padding: 10px 30px 10px 5px;
 }
 
 .dvdList {
     float: left;
     padding: 45px;
     border: 2px;
-    background-color: #74e7eb;
+    background-color: #c2d4dd;
     width: 30%;
     margin-bottom: 15px;
 }
@@ -74,11 +76,30 @@ h3:after {
 
 .searchTextInput {
     /* float: right; */
-    background-color: #cc99cc;
-    width: 10%;
+    background-color: transparent;
+    width: 170px;
+    padding: 10px 0px 10px 40px;
 }
 
 .dvdCover {
     float: right;
     padding: 20px 20% 0px 0px;
 }
+
+.selectLabel {
+    padding: 10px 0px 10px 30px;
+}
+
+/* IDs */
+ #select_body {
+     display: inline-block;
+ }
+
+ #search_body {
+     display: inline-block;
+ }
+
+ #searchTextInput {
+     height: 15px;
+     background-color: #c2d4dd;
+ }

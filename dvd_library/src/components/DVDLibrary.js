@@ -16,7 +16,7 @@ class DVDLibrary extends React.Component {
             selectedType: "A",
             selectedGenre: "A",
             lastIndex: 0,
-            finished: false,
+            searchText: '',
             loaded: false,
             myDvds: []
         }
@@ -24,6 +24,7 @@ class DVDLibrary extends React.Component {
         this.handleChangeOrder=this.handleChangeOrder.bind(this)
         this.handleChangeType=this.handleChangeType.bind(this)
         this.handleChangeGenre=this.handleChangeGenre.bind(this)
+        this.handleTextSearch=this.handleTextSearch.bind(this)
     }
 
     componentDidMount() {
@@ -75,6 +76,11 @@ class DVDLibrary extends React.Component {
         }
     }
 
+    handleTextSearch(newText) {
+        // alert(newText)
+        this.setState({ searchText: newText})
+    }
+
     render() {
         return (
             <div>
@@ -83,7 +89,7 @@ class DVDLibrary extends React.Component {
                     <div>
                         <Header />
                         <Select changeOrder={ this.handleChangeOrder } changeType= { this.handleChangeType } changeGenre={ this.handleChangeGenre } />
-                        <Search />
+                        <Search textChange={ this.handleTextSearch } />
                         { /* The Body is floating */ }
                         <Body />
                         <DvdList 
@@ -91,6 +97,7 @@ class DVDLibrary extends React.Component {
                             sortOrder={ this.state.sortOrder }
                             selectedType={ this.state.selectedType }
                             selectedGenre={ this.state.selectedGenre }
+                            searchText={ this.state.searchText }
                         />
                         
                         <AddNewTitle addNewDvdButton={ this.handleAdd } />

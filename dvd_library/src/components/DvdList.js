@@ -34,12 +34,24 @@ class DvDList extends React.Component {
             return this.props.selectedType === 'A' || item.type === this.props.selectedType
         })
 
-         // Filter out by Genre - stored as an array on DVD
-         myDvds = myDvds.filter(item => {
+        // Filter out by Genre - stored as an array on DVD
+        myDvds = myDvds.filter(item => {
             return this.props.selectedGenre === 'A' || item.genre.filter(genre => {
                 return genre === this.props.selectedGenre
             }).length > 0 
         })
+
+        // Filter by search text
+        if (this.props.searchText !== '') {
+            myDvds = myDvds.filter(item => {
+                console.log(this.props.searchText.toLowerCase())
+                return String(item.name).toLowerCase().includes(this.props.searchText.toLowerCase())
+                // console.log(searchItem)
+                // return true
+                // item.name.toLowercase().includes(searchText.toLowercase())
+            })
+        }
+        
 
         return (
             <div className="dvdList">

@@ -75,20 +75,45 @@ h3:after {
 }
 
 .searchTextInput {
-    /* float: right; */
     background-color: transparent;
     width: 170px;
     padding: 10px 0px 10px 40px;
 }
 
 .dvdCover {
-    float: right;
-    padding: 20px 20% 0px 0px;
+    /* float: right; */
+    padding: 20px 20% 0px 50px;
+}
+.coverFront {
+    display: inline-block;
+}
+.coverBack {
+    display: inline-block;
 }
 
 .selectLabel {
     padding: 10px 0px 10px 30px;
 }
+
+.fullWidthBreak {
+    display: block;
+    width: 100%;
+}
+
+.bodyDetail {
+    padding: 20px 0px 0px 40px;
+}
+.bodyLink {
+    /* padding-top: 40px; */
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.leftPadding {
+    padding-left: 230px;
+}
+
+
 
 /* IDs */
  #select_body {
@@ -97,9 +122,16 @@ h3:after {
 
  #search_body {
      display: inline-block;
+     /* width: 60%; */
  }
 
  #searchTextInput {
      height: 15px;
      background-color: #c2d4dd;
+ }
+
+ #bodyDvdDetails {
+     float: right;
+     background-color: yellowgreen;
+     width: 60%;
  }

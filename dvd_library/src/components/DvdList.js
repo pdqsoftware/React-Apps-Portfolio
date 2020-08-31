@@ -55,9 +55,11 @@ class DvDList extends React.Component {
 
         return (
             <div className="dvdList">
+
+            {/* <p className="dvdName" onClick={ () => this.props.dvdSelected("Movie Name") } key={ "MovieName" }>{ "About Time" }</p> */}
                 { myDvds.length == 0 ? 
                     <p>No DVDs selected to display!</p> 
-                    : myDvds.map(item => <p className="dvdName" key={ item.name }>{ item.name }</p>) 
+                    : myDvds.map(item => <p className="dvdName" onClick={ () => this.props.dvdSelected(item.name) } key={ item.name }>{ item.name }</p>) 
                 }
             </div>
         )

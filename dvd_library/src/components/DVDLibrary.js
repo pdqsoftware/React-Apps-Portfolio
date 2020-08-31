@@ -6,6 +6,7 @@ import AddNewTitle from './AddNewTitle'
 import Select from './Select'
 import Search from './Search'
 import Body from './Body'
+import HorizontalBreak from './HorizontalBreak'
 
 class DVDLibrary extends React.Component {
 
@@ -18,13 +19,79 @@ class DVDLibrary extends React.Component {
             lastIndex: 0,
             searchText: '',
             loaded: false,
-            myDvds: []
+            myDvds: [],
+            selectedDvd: [],
+            genre: [
+                {
+                    value: "A",
+                    label: "Any"
+                },
+                {
+                    value: "action",
+                    label: "Action"
+                },
+                {
+                    value: "comedy",
+                    label: "Comedy"
+                },
+                {
+                    value: "christmas",
+                    label: "Christmas"
+                },
+                {
+                    value: "romance",
+                    label: "Love Story"
+                },
+                {
+                    value: "thriller",
+                    label: "Thriller"
+                },
+                {
+                    value: "children",
+                    label: "Children's"
+                },
+                {
+                    value: "scifi",
+                    label: "Sci-Fi"
+                },
+                {
+                    value: "drama",
+                    label: "Drama"
+                },
+                {
+                    value: "fantasy",
+                    label: "Fantasy"
+                }
+            ],
+            type: [
+                {
+                    value: "A",
+                    label: "All"
+                },
+                {
+                    value: "M",
+                    label: "Movie"
+                },
+                {
+                    value: "S",
+                    label: "Series"
+                },
+                {
+                    value: "other",
+                    label: "Other"
+                },
+                {
+                    value: "unknown",
+                    label: "Unknown"
+                }
+            ],
         }
         this.handleAdd=this.handleAdd.bind(this)
         this.handleChangeOrder=this.handleChangeOrder.bind(this)
         this.handleChangeType=this.handleChangeType.bind(this)
         this.handleChangeGenre=this.handleChangeGenre.bind(this)
         this.handleTextSearch=this.handleTextSearch.bind(this)
+        this.handleDvdSelected=this.handleDvdSelected.bind(this)
     }
 
     componentDidMount() {
@@ -77,8 +144,29 @@ class DVDLibrary extends React.Component {
     }
 
     handleTextSearch(newText) {
-        // alert(newText)
+        // Save the user's search text into state - forces a refresh
         this.setState({ searchText: newText})
+    }
+
+    handleDvdSelected(dvdName) {
+        // Display the selected DVD details on RHS of screen
+        // Find DVD in array and set its values in state
+        const dvdMatch = this.state.myDvds.findIndex((item) => {
+            return item.name === dvdName
+        })
+
+        const myDvd = [{
+            name: this.state.myDvds[dvdMatch].name,
+            length: this.state.myDvds[dvdMatch].length,
+            genre: this.state.myDvds[dvdMatch].genre,
+            type: this.state.myDvds[dvdMatch].type,
+            front: this.state.myDvds[dvdMatch].frontCoverImage,
+            back: this.state.myDvds[dvdMatch].backCoverImage,
+            link: this.state.myDvds[dvdMatch].imdb_link
+        }]
+        this.setState({
+            selectedDvd: myDvd
+        })
     }
 
     render() {
@@ -88,16 +176,18 @@ class DVDLibrary extends React.Component {
                 (
                     <div>
                         <Header />
-                        <Select changeOrder={ this.handleChangeOrder } changeType= { this.handleChangeType } changeGenre={ this.handleChangeGenre } />
+                        <Select changeOrder={ this.handleChangeOrder } changeType= { this.handleChangeType } changeGenre={ this.handleChangeGenre } genreList={ this.state.genre } movieTypes={ this.state.type } />
                         <Search textChange={ this.handleTextSearch } />
+                        <HorizontalBreak />
                         { /* The Body is floating */ }
-                        <Body />
+                        <Body selectedDvd={ this.state.selectedDvd } genreList={ this.state.genre } movieTypes={ this.state.type } />
                         <DvdList 
                             dvds={ this.state.myDvds }
                             sortOrder={ this.state.sortOrder }
                             selectedType={ this.state.selectedType }
                             selectedGenre={ this.state.selectedGenre }
                             searchText={ this.state.searchText }
+                            dvdSelected={ this.handleDvdSelected }
                         />
                         
                         <AddNewTitle addNewDvdButton={ this.handleAdd } />

@@ -8,42 +8,53 @@
         },
         {
             "name": "Cold Feet",
+            "frontCoverImage": "cold_feet_front.PNG",
             "type": "S",
             "genre": ["comedy"],
             "length": "N/A"
         },
         {
             "name": "About Time",
+            "frontCoverImage": "about_time_front.PNG",
+            "backCoverImage": "about_time_back.jpg",
             "type": "M",
-            "genre": ["love"],
-            "length": 118
+            "genre": ["romance", "comedy", "drama", "fantasy"],
+            "length": 123,
+            "imdb_link": "https://www.imdb.com/title/tt2194499/?ref_=fn_al_tt_1"
         },
         {
-            "name": "Christmas Message",
+            "name": "You've Got Mail",
             "type": "M",
-            "genre": ["christmas", "love"],
-            "length": 94
+            "genre": ["comedy", "romance", "drama"],
+            "length": 119,
+            "imdb_link": "https://www.imdb.com/title/tt0128853/?ref_=fn_al_tt_1",
+            "released": 1998
         },
         {
             "name": "New Tricks",
+            "frontCoverImage": "new_tricks_front.PNG",
+            "backCoverImage": "new_tricks_back.PNG",
             "type": "S",
             "genre": ["action"],
-            "length": "N/A"
+            "length": "N/A",
+            "imdb_link": "https://www.imdb.com/title/tt0362357/?ref_=fn_al_tt_1"
         },
         {
             "name": "Did you hear what happened to the Morgans?",
             "type": "M",
-            "genre": ["love"],
+            "genre": ["romance"],
             "length": 99
         },
         {
             "name": "Kingdom",
+            "frontCoverImage": "kingdom_front.PNG",
             "type": "S",
             "genre": ["comedy"],
             "length": "N/A"
         },
         {
             "name": "Detectorists",
+            "frontCoverImage": "detectorists_front.PNG",
             "type": "S",
             "genre": ["comedy"],
             "length": "N/A"
@@ -51,8 +62,16 @@
         {
             "name": "Generic Test Movie",
             "type": "M",
-            "genre": ["action", "love", "christmas", "comedy", "thriller", "children", "scifi"],
+            "genre": ["action", "romance", "christmas", "comedy", "thriller", "children", "scifi"],
             "length": 201
+        },
+        {
+            "name": "A Touch of Frost",
+            "frontCoverImage": "touch_of_frost_front.PNG",
+            "type": "S",
+            "genre": ["action", "thriller"],
+            "length": "N/A",
+            "imdb_link": "https://www.imdb.com/title/tt0108967/?ref_=tt_sims_tti"
         }
     ]
 }

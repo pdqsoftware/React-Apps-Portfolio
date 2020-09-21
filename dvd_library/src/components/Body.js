@@ -42,7 +42,7 @@ class Body extends React.Component {
 
         return this.props.selectedDvd[0] == null ? 
         (
-            <div id="bodyDvdDetails"><p>Nothing Selected!</p></div>
+            <div id="bodyDvdDetails" className="bodyDetail"><p>No DVD selected yet!</p></div>
         
          ) :
         (

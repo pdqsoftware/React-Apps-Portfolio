@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom'
 
 
 import DVDLibrary from './components/DVDLibrary'
+import 'normalize.css/normalize.css'
 
-// const title = 'DVD Library'
 
 // JSX - JavaScript XML
+// const title = 'DVD Library'
 // var template = <p>{ title }</p>
-
 
 
 

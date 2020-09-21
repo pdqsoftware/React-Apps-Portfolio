@@ -2,11 +2,12 @@ import React from 'react'
 
 import Header from './Header'
 import DvdList from './DvdList'
-import AddNewTitle from './AddNewTitle'
+import AddNewDvdButton from './AddNewDvdButton'
 import Select from './Select'
 import Search from './Search'
 import Body from './Body'
 import HorizontalBreak from './HorizontalBreak'
+import AddNewDvd from './AddNewDvd'
 
 class DVDLibrary extends React.Component {
 
@@ -19,6 +20,7 @@ class DVDLibrary extends React.Component {
             lastIndex: 0,
             searchText: '',
             loaded: false,
+            addNewDvdModal: false,
             myDvds: [],
             selectedDvd: [],
             genre: [
@@ -86,12 +88,14 @@ class DVDLibrary extends React.Component {
                 }
             ],
         }
-        this.handleAdd=this.handleAdd.bind(this)
+        this.handleOpenNewDvdModal=this.handleOpenNewDvdModal.bind(this)
+        this.handleCloseNewDvdModal=this.handleCloseNewDvdModal.bind(this)
         this.handleChangeOrder=this.handleChangeOrder.bind(this)
         this.handleChangeType=this.handleChangeType.bind(this)
         this.handleChangeGenre=this.handleChangeGenre.bind(this)
         this.handleTextSearch=this.handleTextSearch.bind(this)
         this.handleDvdSelected=this.handleDvdSelected.bind(this)
+        this.handleAddNewDvd=this.handleAddNewDvd.bind(this)
     }
 
     componentDidMount() {
@@ -99,26 +103,45 @@ class DVDLibrary extends React.Component {
 
         let parsedJSON = require('../data.json')
         const myDvds = parsedJSON.dvds
-        this.setState({
+        this.setState(() => ({
             myDvds: myDvds
-        })
-        this.setState({
+        }))
+        this.setState(() => ({
             loaded: true
-        })
+        }))
     }
 
-    handleAdd() {
+    handleAddNewDvd(newDvd) {
         // TODO:
-        alert('Load module for adding new DVD')
+        // alert('Load module for adding new DVD')
+        // Adds the details to DVD data
+        // e.preventDefault()      // Prevent the normal form submit behaviour ??????
+        const dvdList = this.state.myDvds
+        dvdList.push(newDvd)
+        this.setState(() => ({ 
+            addNewDvdModal: false,
+            myDvds: dvdList
+        }))
+        console.log("newDvd: " + newDvd.name)
+        console.log("newDvd: " + newDvd.type)
+    }
+
+    handleOpenNewDvdModal() {
+        console.log('Opening Modal')
+        this.setState(() => ({ addNewDvdModal: true }))
+    }
+
+    handleCloseNewDvdModal() {
+        this.setState(() => ({ addNewDvdModal: false }))
     }
 
     handleChangeOrder(newOrder) {
         // Change the order when user clicks on the Ascending/Descending dropdown
         if (this.state.sortOrder !== newOrder) {
             // Order has changed
-            this.setState({
+            this.setState(() => ({
                 sortOrder: newOrder === "asc" ? "asc" : "desc"
-            })
+            }))
         }
     }
 
@@ -126,9 +149,9 @@ class DVDLibrary extends React.Component {
         // Change the selection criteria for DVD Type - All, Movie or Series
         if (this.state.selectedType !== newType) {
             // Type has changed
-            this.setState({
+            this.setState(() => ({
                 selectedType: newType
-            })
+            }))
         }
     }
 
@@ -136,10 +159,9 @@ class DVDLibrary extends React.Component {
         // Change the genre
         if (this.state.selectedGenre !== newGenre) {
             // Genre has changed
-            this.setState({
+            this.setState(() => ({
                 selectedGenre: newGenre
-            })
-
+            }))
         }
     }
 
@@ -190,7 +212,17 @@ class DVDLibrary extends React.Component {
                             dvdSelected={ this.handleDvdSelected }
                         />
                         
-                        <AddNewTitle addNewDvdButton={ this.handleAdd } />
+                        <AddNewDvdButton openNewDvdModal={ this.handleOpenNewDvdModal } />
+
+                        <AddNewDvd
+                            closeNewDvdModal={ this.handleCloseNewDvdModal }
+                            addNewDvdEntry={ this.handleAddNewDvd } 
+                            modalOpen = { this.state.addNewDvdModal }
+                            movieTypes={ this.state.type }
+                            genreList={ this.state.genre }
+                        />
+
+
                     </div>
                 )
                 : null }

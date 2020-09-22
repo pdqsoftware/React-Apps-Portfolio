@@ -34,7 +34,7 @@ h3:after {
 .dropdown {
     display: inline-block;
     color: #000000;
-    padding: 10px 30px 10px 5px;
+    padding: 10px 30px 10px 15px;
 }
 
 .dvdList {
@@ -44,14 +44,11 @@ h3:after {
     background-color: #c2d4dd;
     width: 30%;
     margin-bottom: 15px;
+    margin-left: 15px;
 }
 
 .addNewButton {
     clear: both;
-    /* 
-    margin: 0 0.3em 0.3em 0;
-    box-sizing: border-box;
-    */
     font-family: 'Roboto',sans-serif;
     color: #333333;
     font-weight:300;
@@ -61,8 +58,10 @@ h3:after {
     text-align: center;
     transition: all 0.2s;
     width: 30%;
-    padding: 10px 45px;
-    /* margin-top: 50px; */
+    min-width: 25%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-left: 15px;
     -webkit-border-radius: 10px;  -moz-border-radius: 10px;  border-radius: 10px;
 }
 .addNewButton:hover {
@@ -70,6 +69,9 @@ h3:after {
     background-color: #7f84e6;
 }
 
+.dvdName {
+    cursor: pointer;
+}
 .dvdName::before {
     content: '\25FD  ';
 }
@@ -102,6 +104,7 @@ h3:after {
 
 .bodyDetail {
     padding: 20px 0px 0px 40px;
+    font-weight: 500;
 }
 .bodyLink {
     /* padding-top: 40px; */
@@ -113,6 +116,51 @@ h3:after {
     padding-left: 230px;
 }
 
+/* Classes for Modal */
+.Modal {
+    position: absolute;
+    top: 40px;
+    left: 25%;
+    right: 35%;
+    bottom: auto;
+    background-color: #eeeefe;
+  }
+
+/* .Overlay {
+    position: fixed;
+    top: 10%;
+    left: 10%;
+    right: 20%;
+    bottom: 10;
+    background-color: rgb(173, 148, 198);
+  }  */
+
+.newDvdLabel {
+    padding: 10px 10px 10px 30px;
+    display: inline-block;
+    width: 30%;
+    text-align: right;
+}
+.newDvdInput {
+    padding: 10px 10px 10px 30px;
+    display: inline-block;
+    width: 50%;
+}
+.newDvdDropdown {
+    padding: 10px 30px 10px 0px;
+}
+
+.newDvdButton {
+    /* left: 50px;
+    padding: 15px 15px 15px 15px; */
+    display: inline-block;
+    width: 40%;
+    margin-left: 30px;
+}
+.newDvdButtonContainer {
+    padding: 50px 100px 20px 100px;
+}
+  
 
 
 /* IDs */
@@ -134,4 +182,5 @@ h3:after {
      float: right;
      background-color: yellowgreen;
      width: 60%;
+     margin-right: 15px;
  }

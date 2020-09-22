@@ -20,9 +20,11 @@ class DVDLibrary extends React.Component {
             lastIndex: 0,
             searchText: '',
             loaded: false,
+            saveEnabled: false,
             addNewDvdModal: false,
             myDvds: [],
             selectedDvd: [],
+            newDvd: [],
             genre: [
                 {
                     value: "A",
@@ -96,6 +98,7 @@ class DVDLibrary extends React.Component {
         this.handleTextSearch=this.handleTextSearch.bind(this)
         this.handleDvdSelected=this.handleDvdSelected.bind(this)
         this.handleAddNewDvd=this.handleAddNewDvd.bind(this)
+        this.handleUpdateDVD=this.handleUpdateDVD.bind(this)
     }
 
     componentDidMount() {
@@ -111,24 +114,27 @@ class DVDLibrary extends React.Component {
         }))
     }
 
-    handleAddNewDvd(newDvd) {
+    handleAddNewDvd() {
         // TODO:
         // alert('Load module for adding new DVD')
         // Adds the details to DVD data
         // e.preventDefault()      // Prevent the normal form submit behaviour ??????
         const dvdList = this.state.myDvds
-        dvdList.push(newDvd)
+        dvdList.push(this.state.newDvd)
         this.setState(() => ({ 
             addNewDvdModal: false,
             myDvds: dvdList
         }))
-        console.log("newDvd: " + newDvd.name)
-        console.log("newDvd: " + newDvd.type)
+        console.log("newDvd: " + this.state.newDvd.name)
+        console.log("newDvd: " + this.state.newDvd.type)
     }
 
     handleOpenNewDvdModal() {
         console.log('Opening Modal')
-        this.setState(() => ({ addNewDvdModal: true }))
+        this.setState(() => ({
+            newDvd: [],
+            addNewDvdModal: true
+        }))
     }
 
     handleCloseNewDvdModal() {
@@ -191,6 +197,38 @@ class DVDLibrary extends React.Component {
         })
     }
 
+    handleUpdateDVD(element, value) {
+        console.log("Update: " + element + " " + value)
+
+        const dvd = this.state.newDvd
+        let saveButtonEnabled = false
+
+
+        if (element === "genre") {
+            let genreArray = []
+            genreArray.push(value)
+            dvd['genre'] = genreArray
+        } else {
+            dvd[element] = value
+        }
+
+        console.log('Name: ' + dvd['name'])
+        console.log('Type: ' + dvd['type'])
+        console.log('Genre: ' + dvd['genre'])
+        if (dvd['name'] !== undefined && dvd['type'] !== undefined && dvd['genre'] !== undefined) {
+            // Enable the save DVD button
+            saveButtonEnabled = true
+        }
+
+        console.log("SaveButtonEnabled: " + saveButtonEnabled)
+        
+
+        this.setState(() => ({
+            saveEnabled: saveButtonEnabled,
+            newDvd: dvd
+        }))
+    }
+
     render() {
         return (
             <div>
@@ -216,8 +254,10 @@ class DVDLibrary extends React.Component {
 
                         <AddNewDvd
                             closeNewDvdModal={ this.handleCloseNewDvdModal }
-                            addNewDvdEntry={ this.handleAddNewDvd } 
+                            addNewDvdEntry={ this.handleAddNewDvd }
+                            updateDVD = { this.handleUpdateDVD }
                             modalOpen = { this.state.addNewDvdModal }
+                            saveEnabled = { this.state.saveEnabled }
                             movieTypes={ this.state.type }
                             genreList={ this.state.genre }
                         />

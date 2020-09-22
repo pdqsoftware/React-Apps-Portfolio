@@ -7,93 +7,78 @@ Modal.setAppElement('#app')
 
 class AddNewDvd extends React.Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            saveEnabled: false,
-            newDVD: []
-        }
-        console.log('Construtor has run...')
-        // this.handleUpdateDVD = this.handleUpdateDVD.bind(this)
-    }
-
-    handleUpdateDVD(element, value) {
-        console.log("Update: " + element + " " + value)
-        const dvd = this.state.newDVD
-        let saveButtonEnabled = false
-
-        
-
-        if (element === "genre") {
-            let genreArray = []
-            genreArray.push(value)
-            dvd['genre'] = genreArray
-        } else {
-            dvd[element] = value
-        }
-
-        console.log('Name: ' + dvd['name'])
-        console.log('Type: ' + dvd['type'])
-        console.log('Genre: ' + dvd['genre'])
-        if (dvd['name'] !== undefined && dvd['type'] !== undefined && dvd['genre'] !== undefined) {
-            // Enable the save DVD button
-            saveButtonEnabled = true
-        }
-        
-
-        this.setState(() => ({
-            saveEnabled: saveButtonEnabled,
-            newDvd: dvd
-        }))
-    }
     
     render() {
         console.log('Modal called ' + this.props.modalOpen)
+
+        const customStyles = {
+            content : {
+              top                   : '40%',
+              left                  : '25%',
+              right                 : 'auto',
+              bottom                : 'auto',
+              marginRight           : '-50%',
+              transform             : 'translate(-50%, -50%)'
+            }
+        }
+
+        // Extract variable(s)/function(s) from props
+        const { saveEnabled, updateDVD } = this.props
        
         return (
             <Modal
                 isOpen = { this.props.modalOpen }
                 onRequestClose = { this.props.closeNewDvdModal }
                 contentLabel = "Add new DVD to Collection"
+                /* style={ customStyles } */
+                className = "Modal"
+                overlayClassName = "Overlay"
             >
                 <div>
                     <h3>Enter the details of the new DVD</h3>
-                    <label className="selectLabel">Type:</label>
-                    <div className="dropdown" >
-                        <select id="movie_type" name="type" onChange = { (e) => this.handleUpdateDVD("type", e.target.value) } >
+
+                    <label className="newDvdLabel">Type:</label>
+                    <div   className="dropdown newDvdDropdown">
+                        <select id="movie_type" name="type"  onChange = { (e) => updateDVD("type", e.target.value) } >
                             { this.props.movieTypes.map(item => <option key={ item.value } value={ item.value }>{ item.label }</option>) }
                         </select>
                     </div>
+
                     <div>
-                        <p>Name:</p>
-                        <input type="text" name="name" onChange = { (e) => this.handleUpdateDVD("name", e.target.value) } />
+                        <p className="newDvdLabel">Name:</p>
+                        <input type="text" name="name" className="newDvdInput" onChange = { (e) => updateDVD("name", e.target.value) } />
                     </div>
+
                     <div>
-                        <p>Length</p>
-                        <input type="text" name="length" onChange = { (e) => this.handleUpdateDVD("length", e.target.value) } />
+                        <p className="newDvdLabel">Length:</p>
+                        <input type="text" name="length" className="newDvdInput" onChange = { (e) => updateDVD("length", e.target.value) } />
                     </div>
-                    <label className="selectLabel">Genre(s):</label>
-                    <div className="dropdown" onChange={ e => this.handleUpdateDVD("genre", e.target.value) }>
+
+                    <label className="newDvdLabel">Genre(s):</label>
+                    <div className="dropdown newDvdDropdown"  onChange={ e => updateDVD("genre", e.target.value) }>
                         <select id="movie_genre" name="genre">
                             { this.props.genreList.map(item => <option key={ item.value } value={ item.value }>{ item.label }</option> ) }
                         </select>
                     </div>
+
                     <div>
-                        <p>IMDb Link:</p>
-                        <input type="text" name="link" onChange = { (e) => this.handleUpdateDVD("imdb_link", e.target.value) } />
-                    </div>
-                    <div>
-                        <p>Front Cover Image Name:</p>
-                        <input type="text" name="frontCover" onChange = { (e) => this.handleUpdateDVD("frontCoverImage", e.target.value) } />
-                    </div>
-                    <div>
-                        <p>Back Cover Image Name:</p>
-                        <input type="text" name="backCover" onChange = { (e) => this.handleUpdateDVD("backCoverImage", e.target.value) } />
+                        <p className="newDvdLabel">IMDb Link:</p>
+                        <input type="text" name="link" className="newDvdInput" onChange = { (e) => updateDVD("imdb_link", e.target.value) } />
                     </div>
 
                     <div>
-                        <button className="addButton" disabled={!this.state.saveEnabled} onClick={ (e) => this.props.addNewDvdEntry(this.state.newDVD) }>Add DVD to collection</button>
-                        <button className="closeButton" onClick={ this.props.closeNewDvdModal }>Cancel</button>
+                        <p className="newDvdLabel">Front Cover Image Name:</p>
+                        <input type="text" name="frontCover" className="newDvdInput" onChange = { (e) => updateDVD("frontCoverImage", e.target.value) } />
+                    </div>
+
+                    <div>
+                        <p className="newDvdLabel">Back Cover Image Name:</p>
+                        <input type="text" name="backCover" className="newDvdInput" onChange = { (e) => updateDVD("backCoverImage", e.target.value) } />
+                    </div>
+
+                    <div className="newDvdButtonContainer">
+                        <button className="newDvdButton addNewButton" disabled={!saveEnabled} onClick={ this.props.addNewDvdEntry }>Add DVD to collection</button>
+                        <button className="newDvdButton addNewButton" onClick={ this.props.closeNewDvdModal }>Cancel</button>
                     </div>
                 </div>
             </Modal>

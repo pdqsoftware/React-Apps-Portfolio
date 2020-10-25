@@ -1,0 +1,116 @@
+/*
+   # => id
+   . => Class
+*/
+
+body {
+    background: #eeeeee;
+    font-family: 'Roboto',sans-serif;
+}
+
+footer {
+    position: fixed;
+    bottom: 5px;
+    width: 100%;
+    text-align: right;
+}
+
+.copyright {
+    text-align: right;
+    padding: 0px 25px;
+    font-size: 70%;
+}
+
+
+
+
+/* Search */
+.searchTextInput {
+    background-color: transparent;
+    width: 170px;
+    padding: 10px 0px 10px 40px;
+}
+#search_body {
+    display: inline-block;
+    /* width: 60%; */
+}
+
+#searchTextInput {
+    height: 15px;
+    background-color: #c2d4dd;
+}
+
+/* Sort order */
+.dropdown {
+    display: inline-block;
+    color: #000000;
+    padding: 10px 30px 10px 15px;
+}
+
+
+/* Buttons */
+.modalButtonContainer {
+    padding: 50px 100px 20px 100px;
+}
+.modalButton {
+    /* left: 50px;
+    padding: 15px 15px 15px 15px; */
+    display: inline-block;
+    width: 40%;
+    margin-left: 30px;
+}
+
+.saveButton .cancelButton {
+    clear: both;
+    font-family: 'Roboto',sans-serif;
+    color: #333333;
+    font-weight:300;
+    cursor: pointer;
+    background-color: #9f84e6;
+    border: 2px solid #666666;
+    text-align: center;
+    transition: all 0.2s;
+    width: 30%;
+    min-width: 25%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-left: 15px;
+    -webkit-border-radius: 10px;  -moz-border-radius: 10px;  border-radius: 10px;
+}
+.saveButton .cancelButton:hover {
+    color: #000000;
+    background-color: #7f84e6;
+}
+
+/* Thumbnails */
+.thumbnail-container {
+    display: inline-block;
+}
+.thumbnail {
+    display: inline-block;
+    /* border-radius: 8px; */
+    /* border-radius: 50%; */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    /* width: 150px; */
+    margin-right: 50px;
+}
+
+/* Full sized image */
+.fullImage {
+    min-width: 300px;
+    max-width: 1200px;
+    max-height: 800px;
+    object-fit: cover;
+}
+
+/* Modal */
+.Modal {
+    position: fixed;
+    top: 40px;
+    left: 25%;
+    right: 25%;
+    bottom: auto;
+    background-color: #eeeefe;
+}

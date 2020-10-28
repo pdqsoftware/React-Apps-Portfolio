@@ -4,11 +4,9 @@ class Thumb extends React.Component {
 
     render() {
         const height = 200
-        const width = height // * this.props.aspectratio
-        // console.log(`Height: ${height}  Width: ${width}`)
-        // console.log(this.props.imageInfo.thumbnailurl)
+        const width = height
         return (
-            <div className="thumbnail-container">
+            <div className="thumbnail-container" key={ this.props.uniqueKey }>
                 <img  
                     className="thumbnail" 
                     key={ this.props.imageInfo.id } 
@@ -20,13 +18,9 @@ class Thumb extends React.Component {
                 ></img>
                 { this.props.showImageName && <p className="thumbnail_text">{ this.props.name }</p> }
                 { this.props.showImageMeta && <p className="thumbnail_text">{ this.props.imageInfo.metadata }</p> }
-                </div>
+            </div>
         )
      } 
  }
 
  export default Thumb
-
-
-
-//  style={{marginRight: 50 + 'px'}}

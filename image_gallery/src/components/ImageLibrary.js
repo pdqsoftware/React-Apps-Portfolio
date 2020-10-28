@@ -40,6 +40,7 @@ class ImageLibrary extends React.Component {
             searchMetaText: '',
             currentImage: 0,
             startZipDownload: false,
+            imageData: null,
         }
         this.handleOpenSettingsModal = this.handleOpenSettingsModal.bind(this)
         this.handleCloseSettingsModal = this.handleCloseSettingsModal.bind(this)
@@ -84,7 +85,6 @@ class ImageLibrary extends React.Component {
                     try {
                         nameArr = pic.metadata.split(',')
                         nameArr.forEach((line) => {
-                            console.log(line)
                             meta.push(line)
                         })
                         
@@ -109,12 +109,96 @@ class ImageLibrary extends React.Component {
                     loaded: true
                 }))
                 meta = [...new Set(meta.sort())]
-                console.log("meta: " + meta)
                 this.setState(() => ({
                     metadata: meta
                 }))
             }
         })
+    }
+
+    zipUpImages(whichMode) {
+        // Start zip download
+        console.log('Start zip download')
+
+        // ---------------------------------------------------------------
+        // var zip = new JSZip()
+        // // zip.file("Hello.txt", "Hello World\n")
+        // var img = zip.folder("images")
+        // img.file("README", "This folder should contain the image files\nBut the feature is not fully implemented yet!\n");
+
+        // zip.generateAsync({
+        //     type:"blob",
+        //     coment: 'Download of Vpress images'
+        //     })
+        //     .then(function(content) {
+        //         // see FileSaver.js
+        //         saveAs(content, "vpress_images.zip")
+        //     });
+        // ---------------------------------------------------------------
+    
+    
+        // If you are loading file from a remote server, be sure to configure “Access-Control-Allow-Origin”
+        // For example, the following image can be loaded from anywhere
+        // const url = "//coreprintdamtest.s3-accelerate.amazonaws.com/VPR/5f8ec87ca4e4a";
+        const url = "/images/cog.png"
+
+        // Initialize the XMLHttpRequest and wait until file is loaded
+        let xhr = new XMLHttpRequest()
+        xhr.onload = () => {
+            // Create a Uint8Array from ArrayBuffer
+            const codes = new Uint8Array(xhr.response)
+
+            // Get binary string from UTF-16 code units
+            const bin = String.fromCharCode.apply(null, codes)
+
+            // Convert binary to Base64
+            const b64 = btoa(bin)
+            console.log(b64)
+            this.setState(() => ({
+                imageData: b64
+            }))
+        };
+
+        // Send HTTP request and fetch file as ArrayBuffer
+        xhr.open('GET', url)
+        xhr.responseType = 'arraybuffer'
+        xhr.send()
+
+        // ---------------------------------------------------------------
+
+        // function getBase64(file) {
+        //     return new Promise((resolve, reject) => {
+        //       const reader = new FileReader();
+        //       reader.readAsDataURL(file);
+        //       reader.onload = () => resolve(reader.result);
+        //       reader.onerror = error => reject(error);
+        //     });
+        //   }
+          
+        //   var file = "/images/cog.png"
+        //   getBase64(file).then(
+        //     data => console.log(data)
+        //   );
+    
+        // ---------------------------------------------------------------
+    
+        var zip = new JSZip()
+        var img = zip.folder("images")
+        img.file("README", "This folder should contain the image files\nBut the feature is not fully implemented yet!\n");
+        // img.file("cog.png", this.state.imageData, {base64: true});
+        img.file("cog.png", this.state.imageData, {base64: false});
+
+        zip.generateAsync({
+            type:"blob",
+            coment: 'Download of Vpress images'
+            })
+            .then(function(content) {
+                // see FileSaver.js
+                saveAs(content, "vpress_images.zip")
+            });
+    
+    
+    
     }
 
  
@@ -134,22 +218,7 @@ class ImageLibrary extends React.Component {
             }))
         }
         if (this.state.zipDownloadOption != 'none') {
-            // // Start zip download
-            console.log('Start zip download')
-
-            var zip = new JSZip();
-            // zip.file("Hello.txt", "Hello World\n");
-            var img = zip.folder("images");
-            img.file("README", "This folder should contain the image files\nBut the feature is not fully implemented yet!\n");
-
-            zip.generateAsync({
-                type:"blob",
-                coment: 'Download of Vpress images'
-                })
-                .then(function(content) {
-                    // see FileSaver.js
-                    saveAs(content, "vpress_images.zip");
-                });
+            this.zipUpImages(this.state.zipDownloadOption)
         }
     }
     handleSaveSettingsModal() {

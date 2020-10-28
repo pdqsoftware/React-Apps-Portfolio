@@ -5,9 +5,6 @@ import Thumb from './Thumb'
 class Images extends React.Component {
 
     render() {
-        // this.props.thumbnails.map((th) => {
-        //     console.log('th: ' + th)
-        // })
 
         let order
         if (this.props.sortOrder === 'asc') {
@@ -36,22 +33,16 @@ class Images extends React.Component {
 
         return (
             <div>
-                
-                
                 { thumbnails.map((item, i) => {
-                       return <Thumb 
-                                counter = { i } 
-                                imageInfo = { item }
-                                aspectratio = { item.aspectratio } 
-                                name = { item.name } 
-                                fileUrl = { item.fileUrl }
-                                showLargeImage = { this.props.showLargeImage }
-                                showImageName = { this.props.showImageName }
-                                showImageMeta = { this.props.showImageMeta }
-                            />
-                }
-                    
-                )  }
+                        return <Thumb 
+                            uniqueKey = { i }
+                            imageInfo = { item }
+                            showLargeImage = { this.props.showLargeImage }
+                            showImageName = { this.props.showImageName }
+                            showImageMeta = { this.props.showImageMeta }
+                        />
+                    }
+                )}
 
             </div>
         )
@@ -61,4 +52,7 @@ class Images extends React.Component {
  export default Images
 
 
-//  { this.props.thumbnails.map((item, i) => {
+                                // {/* aspectratio = { item.aspectratio }  */}
+                                // {/* name = { item.name }  */}
+                                // {/* fileUrl = { item.fileUrl } */}
+                                // {/* counter = { i }  */}

@@ -1,6 +1,6 @@
 import React from 'react'
 
-class Search extends React.Component {
+class MetaSearch extends React.Component {
 
     render() {
         return (
@@ -10,7 +10,7 @@ class Search extends React.Component {
                     <select id="meta_text" name="metaText">
                         <option value="none-selected"> </option>
                         {this.props.metaData.map((metaStr) => (
-                            <option value={metaStr}>
+                            <option value={metaStr} key={metaStr}>
                                 {metaStr}
                             </option>
                         ))}
@@ -21,4 +21,4 @@ class Search extends React.Component {
      } 
  }
 
- export default Search
+ export default MetaSearch

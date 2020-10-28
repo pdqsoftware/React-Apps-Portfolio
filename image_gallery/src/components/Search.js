@@ -1,6 +1,6 @@
 import React from 'react'
 
-class MetaSearch extends React.Component {
+class Search extends React.Component {
 
     render() {
         return (
@@ -14,4 +14,4 @@ class MetaSearch extends React.Component {
      } 
  }
 
- export default MetaSearch
+ export default Search

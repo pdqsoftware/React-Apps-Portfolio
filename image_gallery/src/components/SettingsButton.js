@@ -4,8 +4,8 @@ class AppSettings extends React.Component {
 
     render() {
         return (
-            <div>
-                <div className="appSettings" onClick={ this.props.openSettingsModal }>Show Settings</div>
+            <div id="appSettings">
+                <img src='../images/cog.png' alt="system controls cog image" onClick={ this.props.openSettingsModal } /> 
             </div>
         )
      } 

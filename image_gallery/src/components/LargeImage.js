@@ -30,16 +30,17 @@ class LargeImage extends React.Component {
                 onRequestClose = { this.props.closeLargeImage }
                 contentLabel = "Showing large version of selected image"
                 /* style={ customStyles } */
-                className = "Modal"
-                overlayClassName = "Overlay"
+                className = "Modal imageModal"
+                shouldCloseOnOverlayClick={ true }
             >
-                <div>
+                <div className="imageContainer">
+                    <button className="imageClose" onClick={ this.props.closeLargeImage }>X</button>
                     <img  
                         className="fullImage" 
                         key={ this.props.imageName } 
                         src={ this.props.imageName }  
                     ></img>
-
+                    
                 </div>
             </Modal>
         )

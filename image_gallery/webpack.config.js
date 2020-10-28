@@ -4,7 +4,7 @@ module.exports = {
    entry: './src/app.js',                         //   Source file name
    output: {
        path: path.join(__dirname, 'public'),      //  Absolute path name required for public directory
-       filename: 'bundle.js'                      //   Destination bundle name - must be added to index.html file
+       filename: 'bundle.js'                              //  Destination bundle name - must be added to index.html file
    },
    module: {
         rules: [{

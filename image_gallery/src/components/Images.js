@@ -8,19 +8,46 @@ class Images extends React.Component {
         // this.props.thumbnails.map((th) => {
         //     console.log('th: ' + th)
         // })
+
+        let order
+        if (this.props.sortOrder === 'asc') {
+            order = 1
+        } else { 
+            order = -1
+        }
+
+        let thumbnails = this.props.thumbnails
+
+        // Sort ascending/descending by image name
+        thumbnails.sort((a, b) => (a.name > b.name) ? 1 * order : -1 * order)
+
+        // Filter by search text
+        if (this.props.searchText !== '') {
+            thumbnails = thumbnails.filter(item => {
+                return String(item.name).toLowerCase().includes(this.props.searchText.toLowerCase())
+            })
+        }
+        // Filter by meta text
+        if (this.props.searchMetaText !== 'none-selected') {
+            thumbnails = thumbnails.filter(item => {
+                return String(item.metadata).toLowerCase().includes(this.props.searchMetaText.toLowerCase())
+            })
+        }
+
         return (
             <div>
                 
                 
-                { this.props.thumbnails.map((item, i) => {
-                    return   <Thumb 
+                { thumbnails.map((item, i) => {
+                       return <Thumb 
                                 counter = { i } 
+                                imageInfo = { item }
                                 aspectratio = { item.aspectratio } 
-                                thumbnail = { item.url } 
                                 name = { item.name } 
-                                id = { item.id } 
                                 fileUrl = { item.fileUrl }
                                 showLargeImage = { this.props.showLargeImage }
+                                showImageName = { this.props.showImageName }
+                                showImageMeta = { this.props.showImageMeta }
                             />
                 }
                     
@@ -34,9 +61,4 @@ class Images extends React.Component {
  export default Images
 
 
-//  { this.props.thumbnails.map((th2) => { 
-//     <p><Thumb thumbnail = { th2 } /></p>
-//  })}
-
-
-{/* <img key={ item } src={ item } alt="Girl in a jacket" width="200" height="250"></img> */}
+//  { this.props.thumbnails.map((item, i) => {

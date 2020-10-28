@@ -9,6 +9,8 @@
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "file-saver": "^2.0.2",
+    "jszip": "^3.5.0",
     "live-server": "^1.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -20,7 +22,9 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev-server": "webpack-dev-server"
+    "dev-server": "webpack-dev-server",
+    "babel-build": "babel ./src/app.js -o ./public/scripts/bundle.js --presets env",
+    "build": "webpack --mode production"
   },
   "author": "Paul Pritchard",
   "license": "ISC"

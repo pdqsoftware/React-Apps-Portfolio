@@ -30,45 +30,113 @@ class Settings extends React.Component {
                 onRequestClose = { this.props.closeSettingsModal }
                 contentLabel = "Showing image gallery settings"
                 style={ customStyles }
-                className = "Modal"
-                overlayClassName = "Overlay"
+                className = "Modal settingsModal"
+                shouldCloseOnOverlayClick={ true }
             >
-                <div>
+                <div id="settingsContainer">
                     <h3>Image Library Settings</h3>
+                    <div className="sort_container">
+                        <label>Sort order:</label>
+                        <div className="dropdown" onChange={ e => this.props.changeOrder(e.target.value) }>
+                            <select id="sort_order" name="order">
+                                <option value="asc">Ascending</option>
+                                <option value="desc">Descending</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div className="input_container">
+                        <label className="checkbox">
+                            <input
+                                className="checkbox_input"
+                                name="showImageName"
+                                type="checkbox"
+                                checked={ this.props.showImageName }
+                                onChange={(e) => this.props.handleChangeSettings("showImageName", e.target.checked) } 
+                            /> Show image name?
+                        </label>
 
-                    <label className="newDvdLabel">Type:</label>
-                    <div   className="dropdown newDvdDropdown">
-                        {/* <select id="movie_type" name="type"  onChange = { (e) => updateDVD("type", e.target.value) } >
-                            { this.props.movieTypes.map(item => <option key={ item.value } value={ item.value }>{ item.label }</option>) }
-                        </select> */}
+                        <label className="checkbox">
+                            <input
+                                className="checkbox_input"
+                                name="showImageMeta"
+                                type="checkbox"
+                                checked={ this.props.showImageMeta }
+                                onChange={(e) => this.props.handleChangeSettings("showImageMeta", e.target.checked) } 
+                            /> Show image meta data?
+                        </label>
                     </div>
 
-                    <div>
-                        <p className="newDvdLabel">Name:</p>
-                        <input type="text" name="name" className="newDvdInput" onChange = { (e) => updateDVD("name", e.target.value) } />
+                    <div className="slideshow">
+                        <p><b>Slideshow ?</b></p>
+                        <div>
+                            <label className="slideshow_label">
+                                <input 
+                                    className="slideshow_radio" 
+                                    type="radio" 
+                                    value="all" 
+                                    checked={this.props.slideshowOption === "all"}
+                                    name="slideshow" 
+                                    onChange={ e => { this.props.radioSlideshowChange(e.target.value ) } } 
+                                /> All Images</label>
+                            <label className="slideshow_label">
+                                <input 
+                                    className="slideshow_radio" 
+                                    type="radio" 
+                                    value="selected" 
+                                    disabled = { this.props.searchText === '' ? true : false }
+                                    checked={this.props.slideshowOption === "selected"}
+                                    name="slideshow" 
+                                    onChange={ e => { this.props.radioSlideshowChange(e.target.value ) } } 
+                                /> Selected Images</label>
+                            <label className="slideshow_label">
+                                <input 
+                                    className="slideshow_radio" 
+                                    type="radio" 
+                                    value="none" 
+                                    checked={this.props.slideshowOption === "none"}
+                                    name="slideshow" 
+                                    onChange={ e => { this.props.radioSlideshowChange(e.target.value ) } }
+                                /> No Slideshow</label>
+                        </div>
                     </div>
 
-                    <div>
-                        <p className="newDvdLabel">Length:</p>
-                        <input type="text" name="length" className="newDvdInput" onChange = { (e) => updateDVD("length", e.target.value) } />
+                    <div className="zip">
+                        <p><b>Download Zip of Images ?</b></p>
+                        <div>
+                            <label className="zip_label">
+                                <input 
+                                    className="zip_radio" 
+                                    type="radio" 
+                                    value="all" 
+                                    checked={this.props.zipOption === "all"}
+                                    name="zip_download" 
+                                    onChange={ e => { this.props.radioZipDownloadChange(e.target.value ) } } 
+                                /> All Images</label>
+                            <label className="zip_label">
+                                <input 
+                                    className="zip_radio" 
+                                    type="radio" 
+                                    value="selected" 
+                                    disabled = { this.props.searchText === '' ? true : false }
+                                    checked={this.props.zipOption === "selected"}
+                                    name="zip_download" 
+                                    onChange={ e => { this.props.radioZipDownloadChange(e.target.value ) } } 
+                                /> Selected Images</label>
+                            <label className="zip_label">
+                                <input 
+                                    className="zip_radio" 
+                                    type="radio" 
+                                    value="none" 
+                                    checked={this.props.zipOption === "none"}
+                                    name="zip_download" 
+                                    onChange={ e => { this.props.radioZipDownloadChange(e.target.value ) } }
+                                /> No Download</label>
+                        </div>
                     </div>
 
-                    <label className="newDvdLabel">Genre(s):</label>
-                    <div className="dropdown newDvdDropdown"  onChange={ e => updateDVD("genre", e.target.value) }>
-                        {/* <select id="movie_genre" name="genre">
-                            { this.props.genreList.map(item => <option key={ item.value } value={ item.value }>{ item.label }</option> ) }
-                        </select> */}
-                    </div>
-
-
-                    <div>
-                        <p className="newDvdLabel">Back Cover Image Name:</p>
-                        <input type="text" name="backCover" className="newDvdInput" onChange = { (e) => updateDVD("backCoverImage", e.target.value) } />
-                    </div>
 
                     <div className="modalButtonContainer">
-                        <button className="modalButton saveButton" disabled={!saveEnabled} onClick={ this.props.saveSettings }>Save</button>
-                        <button className="modalButton cancelButton" onClick={ this.props.closeSettingsModal }>Cancel</button>
+                        <button className="modalButton cancelButton" onClick={ this.props.closeSettingsModal }>OK</button>
                     </div>
                 </div>
             </Modal>

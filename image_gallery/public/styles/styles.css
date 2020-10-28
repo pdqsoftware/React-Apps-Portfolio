@@ -70,14 +70,14 @@ footer {
 
 /* Buttons */
 .modalButtonContainer {
-    padding: 50px 100px 20px 90px;
+    padding: 40px 70px 20px 70px;
 }
 .modalButton {
     /* left: 50px;
     padding: 15px 15px 15px 15px; */
     display: inline-block;
     width: 40%;
-    margin-left: 30px;
+    /* margin-left: 10px; */
 }
 
 .saveButton .cancelButton {
@@ -89,11 +89,11 @@ footer {
     border: 2px solid #666666;
     text-align: center;
     transition: all 0.2s;
-    width: 30%;
-    min-width: 25%;
+    width: 50%;
+    min-width: 30%;
     padding-top: 5px;
     padding-bottom: 5px;
-    margin-left: 15px;
+    /* margin-left: 5px; */
     -webkit-border-radius: 10px;  -moz-border-radius: 10px;  border-radius: 10px;
 }
 .saveButton .cancelButton:hover {
@@ -139,6 +139,7 @@ footer {
     padding: 15px;
     /* width: 150px; */
     margin-right: 50px;
+    cursor: pointer;
 }
 .thumbnail_text {
     text-align: center;

@@ -6,12 +6,12 @@ class Images extends React.Component {
 
     render() {
 
-        let order
-        if (this.props.sortOrder === 'asc') {
-            order = 1
-        } else { 
-            order = -1
-        }
+        let order = this.props.sortOrder === 'asc' ? 1 : -1
+        // if (this.props.sortOrder === 'asc') {
+        //     order = 1
+        // } else { 
+        //     order = -1
+        // }
 
         let thumbnails = this.props.thumbnails
 
@@ -34,25 +34,18 @@ class Images extends React.Component {
         return (
             <div>
                 { thumbnails.map((item, i) => {
-                        return <Thumb 
-                            uniqueKey = { i }
-                            imageInfo = { item }
-                            showLargeImage = { this.props.showLargeImage }
-                            showImageName = { this.props.showImageName }
-                            showImageMeta = { this.props.showImageMeta }
-                        />
+                    return <Thumb 
+                        uniqueKey = { i }
+                        imageInfo = { item }
+                        showLargeImage = { this.props.showLargeImage }
+                        showImageName = { this.props.showImageName }
+                        showImageMeta = { this.props.showImageMeta }
+                    />
                     }
                 )}
-
             </div>
         )
      } 
  }
 
  export default Images
-
-
-                                // {/* aspectratio = { item.aspectratio }  */}
-                                // {/* name = { item.name }  */}
-                                // {/* fileUrl = { item.fileUrl } */}
-                                // {/* counter = { i }  */}

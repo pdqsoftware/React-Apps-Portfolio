@@ -28,6 +28,12 @@ class Slideshow extends React.Component {
                     return String(item.name).toLowerCase().includes(this.props.searchText.toLowerCase())
                 })
             }
+            // Filter by meta text
+            if (this.props.searchMetaText !== 'none-selected') {
+                thumbnails = thumbnails.filter(item => {
+                    return String(item.metadata).toLowerCase().includes(this.props.searchMetaText.toLowerCase())
+                })
+            }
         }
 
         const totalImages = thumbnails.length

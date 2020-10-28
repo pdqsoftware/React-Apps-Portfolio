@@ -8,7 +8,6 @@ Modal.setAppElement('#app')
 class Settings extends React.Component {
     
     render() {
-        console.log('Modal called ' + this.props.modalOpen)
 
         const customStyles = {
             content : {
@@ -83,7 +82,7 @@ class Settings extends React.Component {
                                     className="slideshow_radio" 
                                     type="radio" 
                                     value="selected" 
-                                    disabled = { this.props.searchText === '' ? true : false }
+                                    disabled = { this.props.searchText === '' && this.props.metaText === 'none-selected' ? true : false }
                                     checked={this.props.slideshowOption === "selected"}
                                     name="slideshow" 
                                     onChange={ e => { this.props.radioSlideshowChange(e.target.value ) } } 

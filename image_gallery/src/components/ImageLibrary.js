@@ -292,8 +292,6 @@ class ImageLibrary extends React.Component {
         } else if (prop === "showImageMeta") {
             this.setState(() => ({ showImageMeta: value }))
         }
-
-
     }
 
     // Slideshow
@@ -343,6 +341,7 @@ class ImageLibrary extends React.Component {
                             radioZipDownloadChange = { this.handleRadioZipDownloadChange }
                             zipOption = { this.state.zipDownloadOption }
                             searchText = { this.state.searchText }
+                            metaText = { this.state.searchMetaText }
                         />
                         <SettingsButton openSettingsModal={ this.handleOpenSettingsModal } />
                         <Search 
@@ -353,10 +352,9 @@ class ImageLibrary extends React.Component {
                             metaData = { this.state.metadata }
                         />
                         <About 
-                        openAboutLink = { this.handleAboutLink }
+                            openAboutLink = { this.handleAboutLink }
                         />
                         <HorizontalBreak />
-                        
                         <Images 
                             thumbnails = { this.state.thumbnails } 
                             showLargeImage = { this.handleOpenImageModal } 
@@ -379,6 +377,7 @@ class ImageLibrary extends React.Component {
                             slideshowLeft = { this.handleSlideshowLeft }
                             sortOrder = { this.state.sortOrder }
                             searchText = { this.state.searchText }
+                            searchMetaText = { this.state.searchMetaText }
                             thumbnails = { this.state.thumbnails } 
                             currentImage = { this.state.currentImage }
                             slideshowOption = { this.state.slideshowOption }

@@ -6,7 +6,7 @@
     <title>Weather</title>
     <link rel="icon" href="/images/weather.png">
     <link rel="stylesheet" href="/css/styles.css">
-    <script src="/js/app.js"></script>
+    
 </head>
 
 <body>
@@ -15,9 +15,15 @@
 
         <p>Use this site to get your local, or any, weather!</p>
         <p>Simply add <b>'/weather?location=some_place'</b> to the URL</p>
+
+        <form>
+            <input placeholder="Enter your address">
+            <button>Search</button>
+        </form>
     </div>
 
     {{>footer}}
+    <script src="/js/app.js"></script>
 </body>
 
 </html>

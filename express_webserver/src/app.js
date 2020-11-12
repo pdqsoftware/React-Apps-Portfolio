@@ -37,7 +37,7 @@ app.get('/about', (req, res) => {
 
 app.get('/help', (req, res) => {
     res.render('help', {
-        helpText: 'This is some helpful text.',
+        helpText: 'This is, hopefully, some helpful text.',
         title: 'Help',
         name: myName
     })
@@ -50,7 +50,8 @@ app.get('/weather', (req, res) => {
         })
     }
 
-    geocode(req.query.location, (error, { latitude, longitude, location }) => {
+    // The default parameter {} is required in case an unknown location is entered
+    geocode(req.query.location, (error, { latitude, longitude, location } = {}) => {
         if (error) {
             return res.send({ error })
         }
@@ -58,6 +59,7 @@ app.get('/weather', (req, res) => {
         // console.log(req.query)
         // res.send(req.query)
         // res.send(`${latitude}  ${longitude}  ${location}`)
+        console.log(`${latitude}  ${longitude}  ${location}`)
 
         forecast(latitude, longitude, (error, forecastData) => {
             if (error) {

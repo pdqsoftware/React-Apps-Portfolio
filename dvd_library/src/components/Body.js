@@ -55,7 +55,7 @@ class Body extends React.Component {
                     
                     { this.props.selectedDvd[0].back ? <img className="dvdCover coverBack" src={ backCover } alt="- No back cover image -" height="200"></img>
                     :
-                    <p className="coverBack bodyDetails leftPadding">- No back cover image -</p> }
+                    <p className="coverBack bodyDetail leftPadding">- No back cover image -</p> }
                 </div>
                 <div>
                     <p className="bodyDetail">{ movieType }: { movieName }</p>

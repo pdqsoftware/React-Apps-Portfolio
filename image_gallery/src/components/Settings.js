@@ -19,9 +19,6 @@ class Settings extends React.Component {
               transform             : 'translate(10%, 10%)'
             }
         }
-
-        // Extract variable(s)/function(s) from props
-        const { saveEnabled, updateDVD } = this.props
        
         return (
             <Modal

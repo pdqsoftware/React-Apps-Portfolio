@@ -20,9 +20,6 @@ class LargeImage extends React.Component {
               transform             : 'translate(20%, 20%)',
             }
         }
-
-        // Extract variable(s)/function(s) from props
-        const { saveEnabled, updateDVD } = this.props
        
         return (
             <Modal

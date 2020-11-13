@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate",
+  "name": "dvd_library",
   "version": "1.0.0",
-  "description": "Portfolio Boilerplate Code",
+  "description": "Portfolio - DVD Library",
   "main": "index.js",
   "dependencies": {
     "babel-cli": "^6.26.0",

@@ -11,6 +11,8 @@ console.log('Client side javascript file is loaded!')
 //     })
 
 
+// This is the event listener for the form submission, executed when 'Search' is pressed on the 
+// index.html form
 const weatherForm = document.querySelector('form')
 const search = document.querySelector('input')
 const messageOne = document.querySelector('#message-1')
@@ -21,7 +23,7 @@ weatherForm.addEventListener('submit', (e) => {
 
     const location = search.value
 
-    console.log(location)
+    // console.log(`Location matched: ${location}`)
 
     if (location) {
         messageOne.textContent = 'Fetching...'

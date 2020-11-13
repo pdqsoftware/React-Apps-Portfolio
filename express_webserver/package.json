@@ -1,7 +1,7 @@
 {
   "name": "express_webserver",
   "version": "1.0.0",
-  "description": "",
+  "description": "Portfolio - Express Webserver",
   "main": "index.js",
   "dependencies": {
     "express": "^4.17.1",
@@ -13,6 +13,6 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Paul Pritchard",
   "license": "ISC"
 }

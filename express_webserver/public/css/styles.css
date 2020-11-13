@@ -53,3 +53,12 @@ button {
     color: white;
     padding: 8px;
 }
+
+
+.location-example {
+    display: inline-block;
+}
+#location-example-text {
+    color: #888888;
+}
+

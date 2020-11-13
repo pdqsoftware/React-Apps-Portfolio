@@ -35,6 +35,13 @@ app.get('/about', (req, res) => {
     })
 })
 
+app.get('/api', (req, res) => {
+    res.render('api', {
+        title: 'API',
+        name: myName
+    })
+})
+
 app.get('/help', (req, res) => {
     res.render('help', {
         helpText: 'This is, hopefully, some helpful text.',
@@ -59,7 +66,7 @@ app.get('/weather', (req, res) => {
         // console.log(req.query)
         // res.send(req.query)
         // res.send(`${latitude}  ${longitude}  ${location}`)
-        console.log(`${latitude}  ${longitude}  ${location}`)
+        console.log(`Log - user request: latitude - ${latitude}, longitude - ${longitude}, location - ${location}`)
 
         forecast(latitude, longitude, (error, forecastData) => {
             if (error) {
@@ -72,19 +79,6 @@ app.get('/weather', (req, res) => {
                 address: req.query.address
             })
         })
-    })
-})
-
-app.get('/products', (req, res) => {
-    if (!req.query.search) {
-        return res.send({
-            error: 'You must provide a search term'
-        })
-    }
-
-    console.log(req.query.search)
-    res.send({
-        products: []
     })
 })
 

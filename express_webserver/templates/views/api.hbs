@@ -1,0 +1,30 @@
+<!DOCTYPE html> 
+
+<html>
+
+<head>
+    <title>API</title>
+    <link rel="icon" href="/images/weather.png">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/copytext.js"></script>
+    {{!-- <script src="/src/utils/copytext.js"></script> --}}
+</head>
+
+<body>
+    <div class="main-content">
+        {{>header}}
+        <p>To use this site's API:</p>
+        <p>Simply add <b>'/weather?location=some_place'</b> to the host URL</p>
+        <div class="location-example">For example:&nbsp</div><div class="location-example" id="location-example-text"> localhost:3000/weather?location=capetown</div>
+        <p><b>some_place</b> can be a town, city, place or postcode.</p>
+        <div><button onclick="copyToClipboard('location-example-text')">Copy example location URL</button></div>
+    </div>
+    
+    {{>footer}}
+  
+</body>
+
+</html>
+
+
+
